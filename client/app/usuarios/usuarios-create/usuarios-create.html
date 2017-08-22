@@ -1,7 +1,7 @@
 <div>This is the usuarios-create view.</div>
 
 <form name="userForm" ng-submit="vm.guardarUsuario()" >
-	
+
 	<!--label for="">Departamento</label>
 
 	<select name="departamento" id="" ng-model="vm.idDepartamento" ng-change="vm.getCiudad()">
@@ -12,13 +12,13 @@
 
 <label for="">Ciudades</label>
 	<select name="ciudades" id="" ng-model="vm.usuario.ciudad.id" >
-		<option ng-value="item.id" ng-repeat="item in vm.ciudades">{{item.nombre}}</option>	
+		<option ng-value="item.id" ng-repeat="item in vm.ciudades">{{item.nombre}}</option>
 	</select -->
 
 	<label for="">Departamentos</label>
 	<select name="departamento" id="" ng-model="vm.idDepartamento" ng-change="vm.getCiudad()">
 		<option ng-value="item.id" ng-repeat="item in vm.departamentos">{{item.nombre}}</option>
-	
+
 	</select>
 
 	<label for="">Ciudades</label>
@@ -27,6 +27,27 @@
 
 	</select>
 
+
+	<md-autocomplete flex required
+					md-input-name="autocompleteField"
+					md-input-minlength="2"
+					md-input-maxlength="18"
+					md-selected-item="vm.selectedItem"
+					md-search-text="vm.searchText"
+					md-items="item in vm.querySearch(vm.searchText)"
+					md-item-text="item.nombre"
+					md-require-match
+					md-floating-label="Favorite state">
+				<md-item-template>
+					<span md-highlight-text="vm.searchText">{{item.nombre}}</span>
+				</md-item-template>
+				<div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+					<div ng-message="required">You <b>must</b> have a favorite state.</div>
+					<div ng-message="md-require-match">Please select an existing state.</div>
+					<div ng-message="minlength">Your entry is not long enough.</div>
+					<div ng-message="maxlength">Your entry is too long.</div>
+				</div>
+			</md-autocomplete>
 
 	<button type="submit">Guardar</button>
 </form>

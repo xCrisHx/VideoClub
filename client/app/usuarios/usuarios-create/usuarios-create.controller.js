@@ -6,6 +6,10 @@ class UsuariosCreateComponent {
   constructor(ciudadesService,departamentosService) {
     this.ciudadesService = ciudadesService;
     this.departamentosService = departamentosService;
+
+
+    this.selectecItem = null;
+    this.searchText = null;
   }
 
   $onInit(){
@@ -29,6 +33,13 @@ class UsuariosCreateComponent {
 
   guardarUsuario(){
   	console.log(this.usuario);
+  }
+  querySearch(dato){
+    return this.ciudadesService.getCiudades({nombre:dato}).$promise
+    .then(response =>{
+      return response;
+    })
+
   }
 }
 
