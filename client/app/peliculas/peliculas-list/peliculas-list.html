@@ -1,0 +1,7 @@
+<div>This is the peliculas-list view.</div>
+<div ng-repeat="item in vm.peliculas">
+	<p>{{item.nombre}}</p>
+	<p>Like {{item.cantidadLike}}</p>
+	<p>UnLike {{item.cantidadUnLike}}</p>
+	<button ng-click="vm.meGusta(item.id)">Me gusta</button>	
+</div>
